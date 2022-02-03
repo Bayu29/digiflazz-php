@@ -29,7 +29,7 @@ return  [
     /**
      * Development ID
      */
-    'development_id' => env('DIGIFLAZZ_DEVELOPMENT_KEY', 'digiflazz_development_key')
+    'webhook_id' => env('DIGIFLAZZ_WEBHOOK_ID', 'digiflazz_webhook_id')
 
 ]
 ?>
