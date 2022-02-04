@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BayuDev\Digiflazz\Traits;
@@ -47,7 +48,7 @@ trait Getter
     {
         return $this->command ?? null;
     }
-    
+
     /**
      * Get WebhookId
      *
@@ -78,22 +79,27 @@ trait Getter
         return $this->endpoint ?? null;
     }
 
+    /**
+     * Create Signature for request API
+     * 
+     * @return string
+     */
     protected function signature()
     {
-        if (is_null( $this->username() )) {
+        if (is_null($this->username())) {
             throw new DigiflazzSignatureException('Please Insert Username Digiflazz');
         }
 
-        if (is_null( $this->apiKey() )) {
+        if (is_null($this->apiKey())) {
             throw new DigiflazzSignatureException('Please Insert ApiKey');
         }
 
-        if (is_null( $this->command() )) {
+        if (is_null($this->command())) {
             throw new DigiflazzSignatureException('Please Insert command');
         }
-        
-        $signature = md5( $this->username() . $this->apiKey() . $this->command() );
+
+        $signature = md5($this->username() . $this->apiKey() . $this->command());
+
         return $signature;
     }
 }
-?>

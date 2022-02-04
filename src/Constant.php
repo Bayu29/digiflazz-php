@@ -4,26 +4,26 @@ declare(strict_types=1);
 
 namespace BayuDev\Digiflazz;
 
-class Constant 
+class Constant
 {
     /**
      * Username Digiflazz
      */
-     public const USERNAME = '';
+    public const USERNAME = '';
 
     /**
      * Development Key Digiflazz
      */
     public const DEVELOPMENT_KEY = '';
-     
+
     /**
      * Production Key Digiflazz
      */
     public const PRODUCTION_KEY = '';
 
     /**
-    * Development Mode
-    */
+     * Development Mode
+     */
     public const DEVELOPMENT = 'development';
 
     /**
@@ -34,9 +34,5 @@ class Constant
     /**
      * URL ENDPOINT
      */
-    public const ENDPOINT = 'https://api.digiflazz.com/v1';
-
-   
+    public const ENDPOINT = 'https://api.digiflazz.com/v1/';
 }
-
-?>

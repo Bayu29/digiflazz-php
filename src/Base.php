@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace BayuDev\Digiflazz;
@@ -7,30 +8,43 @@ use BayuDev\Digiflazzz\Constant;
 use BayuDev\Digiflazz\Traits\Setter;
 use BayuDev\Digiflazz\Traits\Getter;
 
-class Base 
+class Base
 {
-
-
-    protected $environment;
-    protected $apiKey;
-    protected $username;
-    protected $command;
-    protected $secretKey;
-    protected $webhookId;
-    protected $endpoint;
-
+    use Setter;
+    use Getter;
 
     /**
-     * Constructor set Environment
+     * Set Environment API
      */
-    public function __construct($environment)
-    {
-        switch($environment) {
-            case Constant::PRODUCTION:
-                $this->apiKey = 
-                break;
-        }
+    protected $environment;
 
-    }
+    /**
+     * Set Api Key
+     */
+    protected $apiKey;
+
+    /**
+     * Set Username
+     */
+    protected $username;
+
+    /**
+     * Set Command for request API
+     */
+    protected $command;
+
+    /**
+     * Set Secret Key
+     */
+    protected $secretKey;
+
+    /**
+     * Set WebhookId
+     */
+    protected $webhookId;
+
+    /**
+     * Set Endpoint API
+     */
+    protected $endpoint;
 }
-?>
