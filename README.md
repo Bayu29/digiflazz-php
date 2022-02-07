@@ -1,2 +1,2 @@
 # digiflazz-php
-unofficial library integration kit for digiflazz
+Unofficial integration library for digiflazz.com
