@@ -4,7 +4,7 @@ namespace BayuDev\Digiflazz\Buyer;
 
 use BayuDev\Digiflazz\Http\Request;
 
-class Topup
+class Inquiry
 {
     private $request;
 
@@ -15,26 +15,16 @@ class Topup
     }
 
 
-    public function send($buyerSkuCode, $customerNo, $refId, $message = null)
+    private function validatePln($customerNo)
     {
         $payloads = [
-            'buyer_sku_code' => $buyerSkuCode,
+            'commands' => 'pln-subscribe',
             'customer_no' => $customerNo,
-            'ref_id' => $refId,
         ];
-
-        if ($message) {
-            $payloads['msg'] = $message;
-        }
-
-        $payloads = array_merge(
-            $payloads,
-            $this->request->credentials()->forAction('ref_id')
-        );
 
         return $this->request
             ->withHeader('Accept', 'application/json')
             ->withHeader('Content-Type', 'application/json')
-            ->post('/transaction', $payloads);
+            ->post('/deposit', $payloads);
     }
 }
