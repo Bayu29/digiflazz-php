@@ -8,6 +8,7 @@ class Balance
 {
     private $request;
 
+
     public function __construct(Request $request)
     {
         $this->request = $request;
@@ -22,6 +23,9 @@ class Balance
             $this->request->credentials()->forAction('depo')
         );
 
-        return $this->request->post('/cek-saldo', $payloads);
+        return $this->request
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('Content-Type', 'application/json')
+            ->post('/cek-saldo', $payloads);
     }
 }

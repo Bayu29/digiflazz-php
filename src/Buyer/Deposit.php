@@ -8,6 +8,7 @@ class Deposit
 {
     private $request;
 
+
     public function __construct(Request $request)
     {
         $this->request = $request;
@@ -27,6 +28,9 @@ class Deposit
             $this->request->credentials()->forAction('deposit')
         );
 
-        return $this->request->post('/deposit', $payloads);
+        return $this->request
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('Content-Type', 'application/json')
+            ->post('/deposit', $payloads);
     }
 }

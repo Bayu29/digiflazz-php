@@ -8,6 +8,7 @@ class Topup
 {
     private $request;
 
+
     public function __construct(Request $request)
     {
         $this->request = $request;
@@ -29,12 +30,31 @@ class Topup
             $this->request->credentials()->forAction('ref_id')
         );
 
-        return $this->request->post('/transaction', $payloads);
+        return $this->request
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('Content-Type', 'application/json')
+            ->post('/transaction', $payloads);
     }
 
 
     public function pay($buyerSkuCode, $customerNo, $refId, $message)
     {
-        // ..
+        $payloads = [
+            'commands' => 'pay-pasca',
+            'buyer_sku_code' => $buyerSkuCode,
+            'customer_no' => $customerNo,
+            'ref_id' => $refId,
+            'msg' => $message,
+        ];
+
+        $payloads = array_merge(
+            $payloads,
+            $this->request->credentials()->forAction('ref_id')
+        );
+
+        return $this->request
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('Content-Type', 'application/json')
+            ->post('/transaction', $payloads);
     }
 }

@@ -8,6 +8,7 @@ class PriceList
 {
     private $request;
 
+
     public function __construct(Request $request)
     {
         $this->request = $request;
@@ -39,6 +40,9 @@ class PriceList
             $this->request->credentials()->forAction('pricelist')
         );
 
-        return $this->request->post('/price-list', $payloads);
+        return $this->request
+            ->withHeader('Accept', 'application/json')
+            ->withHeader('Content-Type', 'application/json')
+            ->post('/price-list', $payloads);
     }
 }
